@@ -11,8 +11,8 @@ const Routs = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
           <Route path="/addtocart" element={<Addtocart />} />
           <Route path="/favorite" element={<Favorite />} />

@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import Header from "./Header";
 
 const Favorite = () => {
-  const [fov, setFov] = useState(
-    JSON.parse(localStorage.getItem("fovproduct"))
+  const [Favorite, setFavorite] = useState(
+    JSON.parse(localStorage.getItem("Favorite"))
   );
-  const del = (i) => {
-    let fov = JSON.parse(localStorage.getItem("fovproduct"));
-    fov.splice(i, 1);
-    localStorage.setItem("fovproduct", JSON.stringify(fov));
-    setFov([...fov]);
+  const deletes = (i) => {
+    let Favorite = JSON.parse(localStorage.getItem("Favorite"));
+    Favorite.splice(i, 1);
+    localStorage.setItem("Favorite", JSON.stringify(Favorite));
+    setFavorite([...Favorite]);
   };
   return (
     <>
       <Header />
       <div className="container-fluid ">
         <div className="row text-center">
-          {fov.map((value, Product) => (
+          {Favorite.map((value, Product) => (
             <div className="col-10 col-md-3 mt-5 " key={Product}>
               <div className="card p-2 pt-0 bg-light ">
                 <div className="align-items-center">
@@ -32,7 +32,7 @@ const Favorite = () => {
                       <h2 className="mb-0 mt-0 textLeft">{value.rupe}</h2>
                       <span className="textLeft"></span>
                       <button
-                        onClick={(e) => del(Product)}
+                        onClick={(e) => deletes(Product)}
                         className="btn btn-primary"
                       >
                         Remove to Favorite

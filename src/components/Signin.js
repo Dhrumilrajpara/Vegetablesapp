@@ -4,10 +4,10 @@ const Signin = () => {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
 
-  const dat = JSON.parse(localStorage.getItem("data"));
+  const Userdata = JSON.parse(localStorage.getItem("data"));
   const navigate = useNavigate();
 
-  const handal = (value, key) => {
+  const checkdata = (value, key) => {
     data[key] = value;
     setData({ ...data });
   };
@@ -16,10 +16,12 @@ const Signin = () => {
     e.preventDefault();
     setError(true);
 
-    dat.forEach((element) => {
+    Userdata.forEach((element) => {
       if (
         (data.password && data.password.length < 6) ||
-        (data.email !== dat.email && data.password !== dat.password)
+        !!data.email !== Userdata.email ||
+        !!data.password !== Userdata.password ||
+        (data.email !== element.email && data.password !== element.password)
       ) {
         return;
       }
@@ -41,13 +43,13 @@ const Signin = () => {
             className="form-control"
             aria-describedby="emailHelp"
             placeholder="Enter email"
-            onChange={(e) => handal(e.target.value, "email")}
+            onChange={(e) => checkdata(e.target.value, "email")}
           />
           <div className="text-danger">
             {error && !!data.email == ""
-              ? error && !!data.email !== dat.email
-                ? "email is required"
-                : "invalid email"
+              ? "email is required"
+              : error && !!data.email !== Userdata.email
+              ? "invalid email"
               : null}
           </div>
         </div>
@@ -58,7 +60,7 @@ const Signin = () => {
             type="password"
             className="form-control"
             placeholder="Password"
-            onChange={(e) => handal(e.target.value, "password")}
+            onChange={(e) => checkdata(e.target.value, "password")}
           />
 
           <div className="text-danger">
@@ -66,6 +68,8 @@ const Signin = () => {
               ? "password is required"
               : error && !!data.password && data.password.length < 6
               ? "password must be min 6 charachter"
+              : error && !!data.password !== Userdata.password
+              ? "invalid password"
               : null}
           </div>
         </div>
@@ -75,8 +79,8 @@ const Signin = () => {
         </button>
         <div className="text-danger">
           {error &&
-          !!data.email !== !!dat.email &&
-          !!data.password !== !!dat.password
+          !!data.email !== !!Userdata.email &&
+          !!data.password !== !!Userdata.password
             ? " User not Ragister"
             : null}
         </div>

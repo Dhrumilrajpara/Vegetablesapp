@@ -18,10 +18,8 @@ const Signin = () => {
 
     Userdata.forEach((element) => {
       if (
-        (data.password && data.password.length < 6) ||
-        !!data.email !== Userdata.email ||
-        !!data.password !== Userdata.password ||
-        (data.email !== element.email && data.password !== element.password)
+        (data.email !== element.email && data.password !== element.password) ||
+        (data.password && data.password.length < 6)
       ) {
         return;
       }
@@ -88,7 +86,7 @@ const Signin = () => {
           Have you New User?{" "}
           <Link to="/signup">
             <a href="" className=" p-1 fw-bold text-body">
-              <u className="text-primary">Ragister here</u>
+              <u className="text-primary s">Ragister here</u>
             </a>
           </Link>
         </p>

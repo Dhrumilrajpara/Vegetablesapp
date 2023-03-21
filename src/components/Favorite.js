@@ -32,8 +32,7 @@ const Favorite = () => {
                       <h2 className="mb-0 mt-0 textLeft">{value.rupe}</h2>
                       <span className="textLeft"></span>
                       <button
-                        onCli
-                        ck={(e) => deletes(Product)}
+                        onClick={(e) => deletes(Product)}
                         className="btn btn-primary"
                       >
                         Remove to Favorite

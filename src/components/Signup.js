@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const Signup = () => {
   const [data, setData] = useState({});
   const [errormassage, setErrormassage] = useState(false);
   const navigate = useNavigate();
 
-  const handal = (value, key) => {
+  const userdata = (value, key) => {
     data[key] = value;
     setData(data);
     setData({ ...data });
@@ -56,7 +56,7 @@ const Signup = () => {
             type="text"
             className="form-control"
             placeholder="Username.."
-            onChange={(e) => handal(e.target.value, "username")}
+            onChange={(e) => userdata(e.target.value, "username")}
           />
           <div className="text-danger">
             {errormassage && !!data.username == ""
@@ -73,7 +73,7 @@ const Signup = () => {
             className="form-control"
             aria-describedby="emailHelp"
             placeholder="Enter email"
-            onChange={(e) => handal(e.target.value, "email")}
+            onChange={(e) => userdata(e.target.value, "email")}
           />
           <div className="text-danger">
             {errormassage && !!data.email == "" ? "email is required" : null}
@@ -85,7 +85,7 @@ const Signup = () => {
             type="number"
             className="form-control"
             placeholder="number.."
-            onChange={(e) => handal(e.target.value, "number")}
+            onChange={(e) => userdata(e.target.value, "number")}
           />
           <div className="text-danger">
             {" "}
@@ -103,7 +103,7 @@ const Signup = () => {
             className="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
-            onChange={(e) => handal(e.target.value, "password")}
+            onChange={(e) => userdata(e.target.value, "password")}
           />
           <div className="text-danger">
             {" "}
@@ -121,7 +121,7 @@ const Signup = () => {
             className="form-control"
             id="exampleInputPassword1"
             placeholder="confirm Password"
-            onChange={(e) => handal(e.target.value, "confirmPassword")}
+            onChange={(e) => userdata(e.target.value, "confirmPassword")}
           />
           <div className="text-danger">
             {" "}

@@ -1,99 +1,95 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/home.css";
 import Header from "./Header";
 
 const Home = () => {
-  const [product, setProduct] = useState(
-    //  JSON.parse(localStorage.getItem("adddata"))
-    [
-      {
-        id: 1,
-        img: "Vegetables/A.webp",
-        name: "Apples",
-        rupe: "$10",
-      },
-      {
-        id: 2,
-        img: "Vegetables/banana.jpg",
-        name: "Banana",
-        rupe: "$12",
-      },
-      {
-        id: 3,
-        img: "Vegetables/brinjal.webp",
-        name: "Brinijal",
-        rupe: "$5",
-      },
-      {
-        id: 4,
-        img: "Vegetables/broccoli.webp",
-        name: "Broccoli",
-        rupe: "$20",
-      },
-      {
-        id: 5,
-        img: "vegetables/grepes.jpg",
-        name: "Grepes",
-        rupe: "$18",
-      },
-      {
-        id: 6,
-        img: "Vegetables/mango.webp",
-        name: "mango",
-        rupe: "$20",
-      },
-      {
-        id: 7,
-        img: "Vegetables/orange.jpg",
-        name: "Orange",
-        rupe: "$3",
-      },
-      {
-        id: 8,
-        img: "Vegetables/poteto.jpeg",
-        name: "Poteto",
-        rupe: "$9",
-      },
-      {
-        id: 9,
-        img: "Vegetables/tometo.jpg",
-        name: "Tometo",
-        rupe: "$90",
-      },
-    ]
-  );
-  const [add, setAdd] = useState([]);
+  const [product] = useState([
+    {
+      id: 1,
+      img: "Vegetables/A.webp",
+      name: "Apples",
+      rupe: "$10",
+    },
+    {
+      id: 2,
+      img: "Vegetables/banana.jpg",
+      name: "Banana",
+      rupe: "$12",
+    },
+    {
+      id: 3,
+      img: "Vegetables/brinjal.webp",
+      name: "Brinijal",
+      rupe: "$5",
+    },
+    {
+      id: 4,
+      img: "Vegetables/broccoli.webp",
+      name: "Broccoli",
+      rupe: "$20",
+    },
+    {
+      id: 5,
+      img: "vegetables/grepes.jpg",
+      name: "Grepes",
+      rupe: "$18",
+    },
+    {
+      id: 6,
+      img: "Vegetables/mango.webp",
+      name: "mango",
+      rupe: "$20",
+    },
+    {
+      id: 7,
+      img: "Vegetables/orange.jpg",
+      name: "Orange",
+      rupe: "$3",
+    },
+    {
+      id: 8,
+      img: "Vegetables/poteto.jpeg",
+      name: "Poteto",
+      rupe: "$9",
+    },
+    {
+      id: 9,
+      img: "Vegetables/tometo.jpg",
+      name: "Tometo",
+      rupe: "$90",
+    },
+  ]);
+  const [Addtocart, setAddtocart] = useState([]);
   const [foverite, setFoverite] = useState([]);
   const [data, setData] = useState("");
-  const [num, setNum] = useState([]);
+  const [number, setNumber] = useState([]);
 
-  const viewtocard = (value, key) => {
+  const viewtocard = (value) => {
     let a = value;
-    add.push(a);
-    localStorage.setItem("addproduct", JSON.stringify(add));
-    setAdd(add);
+    Addtocart.push(a);
+    localStorage.setItem("Addtocart", JSON.stringify(Addtocart));
+    setAddtocart(Addtocart);
   };
 
   const foverit = (value) => {
     let a = value;
     foverite.push(a);
-    localStorage.setItem("fovproduct", JSON.stringify(foverite));
+    localStorage.setItem("Favorite", JSON.stringify(foverite));
     setFoverite(foverite);
   };
   useEffect(() => {
     if (data !== "") {
       var update = product.filter((item) => item.name.includes(data));
-      console.log(setNum(update));
-      setNum(update);
+      setNumber(update);
     } else {
-      setNum(product);
+      setNumber(product);
     }
 
-    const fov = localStorage.getItem("fovproduct");
-    if (fov !== null) setFoverite(JSON.parse(fov));
+    const foverite = localStorage.getItem("Favorite");
+    if (foverite !== null) setFoverite(JSON.parse(foverite));
 
-    const add = localStorage.getItem("addproduct");
-    if (add !== null) setAdd(JSON.parse(add));
+    const add = localStorage.getItem("Addtocart");
+    if (add !== null) setAddtocart(JSON.parse(add));
   }, [data]);
 
   return (
@@ -108,7 +104,7 @@ const Home = () => {
           onChange={(e) => setData(e.target.value)}
         />
         <div className="row text-center">
-          {num.map((item, Product) => (
+          {number.map((item, Product) => (
             <div className="col-12 col-md-3  mt-5 " key={Product}>
               <div className="card p-2 pt-0 bg-light ">
                 <div className="align-items-center">

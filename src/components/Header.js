@@ -7,10 +7,8 @@ const Header = () => {
     <div>
       <nav className="d-flex justify-content-between bg-dark bg-dark  ">
         <Link to={"/home"}>
-          {" "}
           <button className="btn btn-outline-info p-2 m-2">Home</button>
         </Link>
-
         <div className="d-flex ">
           <img src={img} alt="" height={50} className="m-2 pt-0" />
           <h1 className="text-white mx-auto "> Vegetables</h1>
